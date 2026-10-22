@@ -1,0 +1,59 @@
+// ============================================================
+// 内置 webfont：JetBrains Mono（等宽轴，O2）
+// 此前 --ui-font-mono 栈首 'JetBrains Mono' 库内无 @font-face，
+// 全靠消费端（playground style.scss 自托管 /fonts/jetbrains-mono-latin.woff2）；
+// 无本机字体的环境（Windows）整栈回退 generic monospace，字形脱节。
+// 现 vendor woff2（Google Fonts v24 静态切片）入库 + 库样式 @font-face，swap 加载。
+//
+// 字重报数（库内 mono 消费点实际档位：1×500 / 8×600 / 11×700）：
+// 只 vendor Regular(400) + Medium(500) 两档；600/700 不额外下载，
+// 由浏览器按 500 位 font-synthesis 合成加粗（spec 2.2：只按实际需要报数）。
+//
+// 许可：SIL OFL 1.1 —— 再分发法定前提，OFL.txt 全文随库
+// （src/styles/fonts/OFL.txt，JetBrains Mono 官方许可全文）。
+// ============================================================
+
+// woff2 走相对路径 url()：库构建时 vite 自动输出到 dist/ 根目录（同名保留），
+// 消费端引 aero-vue/styles 时 CSS 内 url 相对解析命中 dist/*.woff2。
+// 相对路径而非绝对（避免 vite 对 data URL / 根路径的 hash 名改写）。
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/JetBrainsMono-Medium.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/JetBrainsMono-LatinExt-Regular.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A72F, U+AB30-AB63, U+2245;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/JetBrainsMono-LatinExt-Medium.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A72F, U+AB30-AB63, U+2245;
+}

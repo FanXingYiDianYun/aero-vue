@@ -1,0 +1,14 @@
+<script setup lang="ts">
+import { AeroScrollbar, useLocale } from 'aero-vue'
+// 列表条目文案原硬编码中文 → 走词包 demo 组
+const { demo } = useLocale()
+const t = demo
+</script>
+
+<template>
+  <AeroScrollbar :max-height="180" style="max-width: 320px">
+    <p v-for="i in 12" :key="i" style="padding: 10px 14px; color: var(--ui-ink-2); font-size: 13.5px; border-bottom: 2px dashed var(--ui-line); margin: 0">
+      {{ t['scrollbar.item'] }} {{ i }} {{ t['scrollbar.itemNote'] }}
+    </p>
+  </AeroScrollbar>
+</template>

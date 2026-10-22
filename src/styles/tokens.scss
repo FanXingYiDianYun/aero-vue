@@ -1,0 +1,420 @@
+// ============================================================
+// Aero UI Design Tokens —— 全库唯一样式真源
+// 提炼自 design-system.md，任何组件不得在此之外定义色值
+// 前缀约定：CSS 变量 --ui-*；SCSS 变量 $ui-*
+// ============================================================
+
+@use 'sass:color';
+
+// ---------- SCSS 映射（编译期便捷引用） ----------
+$ui-brand: #0EBFFF !default;
+$ui-ok: #12B886 !default;
+$ui-warn: #F59F00 !default;
+$ui-err: #FA5252 !default;
+$ui-star: #F5B301 !default;
+$ui-radius: 18px !default;
+$ui-radius-s: 12px !default;
+
+// ---------- 主题变量文件（运行时 CSS 变量） ----------
+// 亮色默认 + .aero-dark 暗黑 + data-preset 预设，见 :root 块
+
+:root {
+  // 品牌色（预设由 html[data-preset] 或内联覆盖）
+  --ui-brand: #{$ui-brand};
+  --ui-on-brand: color-mix(in srgb, var(--ui-brand) 30%, #000);
+  --ui-brand-deep: color-mix(in srgb, var(--ui-brand) 86%, #03202E);
+  --ui-brand-ink: color-mix(in srgb, var(--ui-brand) 52%, #062940);
+
+  // 派生底色
+  --ui-bg-soft: color-mix(in srgb, var(--ui-brand) 7%, #fff);
+  --ui-bg-tint: color-mix(in srgb, var(--ui-brand) 13%, #fff);
+  --ui-line: color-mix(in srgb, var(--ui-brand) 30%, #fff);
+  --ui-line-2: color-mix(in srgb, var(--ui-brand) 46%, #fff);
+  --ui-dot: color-mix(in srgb, var(--ui-brand) 27%, #fff);
+
+  // 中性色
+  --ui-ink: #0C1B2A;
+  --ui-ink-2: #51637A;
+  --ui-ink-3: #7E93A8;
+  --ui-bg: #FFFFFF;
+  --ui-card: #FFFFFF;
+
+  // 表面层（J1 CodeBlock 终版规格）：跟随主题的中性表面——
+  // surface = 面板本体（=card），surface-2 = 头部/次级表面（ink 微调混色）。
+  // 公式同一，ink 翻转后两主题各自成立（亮=极浅灰底，暗=比 card 略提亮一档）
+  --ui-surface: var(--ui-card);
+  --ui-surface-2: color-mix(in srgb, var(--ui-ink) 4%, var(--ui-card));
+
+  // 语义色
+  --ui-ok: #{$ui-ok};
+  --ui-success: #{$ui-ok};
+  --ui-warn: #{$ui-warn};
+  --ui-err: #{$ui-err};
+  --ui-danger: #{$ui-err};
+  --ui-err-deep: #8C1F1F;
+  --ui-ok-deep: #0B6E4F;
+  --ui-warn-deep: #9A5B00;
+  --ui-on-ink: #FFFFFF;
+  /* 深底（announce 横幅等 color-mix 派生藏蓝底）专用灰阶：
+     --ui-on-ink-2 副文本 / --ui-on-ink-3 弱化元素。值与 announce 内现用
+     硬编码 hex 一致（#CDE0EA/#8FA9BC），替换后零视觉变化。 */
+  --ui-on-ink-2: #CDE0EA;
+  --ui-on-ink-3: #8FA9BC;
+  --ui-info: var(--ui-brand-ink);
+  --ui-star: #{$ui-star};
+
+  // 头像配板
+  --ui-av-1-bg: #CFF1FF; --ui-av-1-tx: #027CB8;
+  --ui-av-2-bg: var(--ui-brand); --ui-av-2-tx: var(--ui-on-brand);
+  --ui-av-3-bg: #0C1B2A; --ui-av-3-tx: #4CC9F0;
+  --ui-av-4-bg: #E6FCF5; --ui-av-4-tx: #0B8A66;
+  --ui-av-5-bg: #FFF4E0; --ui-av-5-tx: #B37500;
+  --ui-av-6-bg: #FFEDEE; --ui-av-6-tx: #D63A3A;
+
+  // 终端专属板（不随主题，复刻 demo 观感）
+  --ui-term-bg: #0B1930;
+  --ui-term-bd: #223E5C;
+  --ui-term-bar: #0E2038;
+  --ui-term-dot: #28486A;
+  --ui-term-txt: #C6DFF2;
+  --ui-term-cmd: #8FE3FF;
+  --ui-term-ok: #7EE2B8;
+  --ui-term-live: #FFD166;
+
+  // 代码窗口：深色「终端面板」板式（亮色模式也用深底）。
+  // 之前是白卡 + 品牌色淡蓝渐变的标题栏：与卡片底色几乎同明度，整体发飘、
+  // 没有边界，代码色也压不住。现在改为深石墨底 + 明确的标题栏分层，
+  // 边界清晰、代码区块在页面里「落得住」，也是云厂商文档的一贯语汇。
+  --ui-cw-bg: #171E29;
+  --ui-cw-bd: #2C3745;
+  --ui-cw-sh: transparent;
+  --ui-cw-bar1: #212A38;
+  --ui-cw-bar2: #1B2330;
+  --ui-cw-tx: #DDE5EE;
+  --ui-cw-ln: #5C6B7C;
+  --ui-cw-ct: #93A3B5;
+  --ui-cw-btb: #3A4757;
+  --ui-cw-btn: #A6B4C4;
+  // 代码高亮（深底上提高一档明度与饱和度，保证可读且不发灰）
+  --ui-tk-c: #7A8A9C; --ui-tk-s: #7FDCAB; --ui-tk-k: #FF8E7A;
+  --ui-tk-k2: #C4A9F0; --ui-tk-f: #F2C078; --ui-tk-n: #FFD166;
+  --ui-tk-p: #8FA2B5; --ui-tk-u: #6FD0E8; --ui-tk-ok: #86D9A2;
+  --ui-tk-v: #C8D4E0;
+  --ui-cw-code-lang-bg: rgba(255, 255, 255, 0.09);
+  --ui-cw-code-lang-bd: rgba(255, 255, 255, 0.18);
+  --ui-cw-code-lang-tx: #9FD8F5;
+  --ui-cw-line-hover: rgba(255, 255, 255, 0.055);
+  --ui-cw-tape: rgba(255, 255, 255, 0.09);
+
+  // 代码高亮——亮底板（CodeBlock 容器/正文跟随 --ui-surface，
+  // 亮主题白卡上深底 token 对比失效，故按主题各出一组）：
+  // 降饱和中明度，白底上可读且不夺主色
+  --ui-code-tk-c: #8A97A8; --ui-code-tk-s: #0E8A5A; --ui-code-tk-k: #D9480F;
+  --ui-code-tk-k2: #7048E8; --ui-code-tk-f: #C26B00; --ui-code-tk-n: #B08A00;
+  --ui-code-tk-p: #6C7A8B; --ui-code-tk-u: #0B7285; --ui-code-tk-ok: #087F5B;
+  --ui-code-tk-v: #495A6B;
+
+  // 圆角阶
+  --ui-radius-xs: 8px;
+  --ui-radius-sm: 10px;
+  --ui-radius-md: 12px;
+  --ui-radius: #{$ui-radius};
+  --ui-radius-lg: 16px;
+  --ui-radius-xl: 20px;
+  --ui-radius-2xl: 26px;
+  --ui-radius-pill: 99px;
+
+  // 字体三轴
+  --ui-font: 'Noto Sans SC', 'Space Grotesk', sans-serif;
+  --ui-font-en: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  // JetBrains Mono 内置后完整回退栈（token 化，库内全部等宽消费点共用）：
+  // 本机有字体→系统 JBM；无→库内置 woff2；再回 ui-monospace/SF Mono/
+  // Menlo/Consolas/Liberation Mono/generic monospace 逐级
+  --ui-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  // 阴影（硬阴影签名体系）
+  --ui-shadow-xs: 2.5px 2.5px 0 var(--ui-ink);
+  --ui-shadow-sm: 4px 4px 0 var(--ui-ink);
+  --ui-shadow-sm-brand: 4px 4px 0 var(--ui-brand);
+  --ui-shadow-md: 6px 6px 0 var(--ui-bg-tint);
+  --ui-shadow-md-brand: 6px 6px 0 var(--ui-brand);
+  --ui-shadow-lg: 7px 7px 0 var(--ui-brand);
+  --ui-shadow-xl: 10px 10px 0 color-mix(in srgb, var(--ui-brand) 55%, transparent);
+  --ui-shadow-xl-brand: 10px 10px 0 var(--ui-brand);
+  --ui-shadow-2xl: 12px 12px 0 var(--ui-bg-tint);
+  --ui-shadow-soft: 0 8px 20px rgba(7, 20, 33, .28);
+  --ui-focus-ring: 0 0 0 4px color-mix(in srgb, var(--ui-brand) 22%, transparent);
+
+  // 毛玻璃档
+  --ui-blur-nav: blur(14px);
+  --ui-blur-mask: blur(4px);
+  --ui-blur-strong: blur(10px) saturate(1.15);
+
+  // 动效曲线与时长
+  --ui-spring: cubic-bezier(.3, 1.4, .4, 1);
+  --ui-ease: cubic-bezier(.2, .8, .2, 1);
+  --ui-dur-fast: .18s;
+  --ui-dur-mid: .3s;
+  --ui-dur-slow: .45s;
+  --ui-flow-dur: 8s;
+
+  // 层级：nav < drag < tip < pop < modal < toast（通知类全库最高）
+  --ui-z-nav: 800;
+  --ui-z-drag: 900;    /* 拖拽项（SortList/swipe-deck 等在 body 下浮层） */
+  --ui-z-tip: 1000;    /* 气泡/提示（tooltip/tour/search 面板） */
+  --ui-z-pop: 1200;    /* 弹层（select/cascader/picker 下拉） */
+  --ui-z-modal: 1300;  /* 模态（dialog/drawer） */
+  --ui-z-toast: 1400;  /* 通知类全库最高（toast-host/notification-host） */
+
+  color-scheme: light;
+}
+
+// ---------- 预设 ----------
+html[data-preset='violet'] { --ui-brand: #7C6CFF; --ui-on-brand: #fff; }
+html[data-preset='mint'] { --ui-brand: #10C999; }
+html[data-preset='sunset'] { --ui-brand: #FF8A3D; --ui-on-brand: #fff; }
+html[data-preset='rose'] { --ui-brand: #FF5C8A; --ui-on-brand: #fff; }
+
+// K6/ConfigProvider（scoped）与 ThemeProvider（scoped 模式）作用域预设——
+// 与 html[data-preset] 同变量值，但只重定义容器自身 custom property，
+// 子组件经 var() 继承获得换色；不写 :root / html，无全局副作用。
+[data-preset='violet'] { --ui-brand: #7C6CFF; --ui-on-brand: #fff; }
+[data-preset='mint'] { --ui-brand: #10C999; }
+[data-preset='sunset'] { --ui-brand: #FF8A3D; --ui-on-brand: #fff; }
+[data-preset='rose'] { --ui-brand: #FF5C8A; --ui-on-brand: #fff; }
+
+// ---------- 暗黑模式 ----------
+html[data-theme='dark'],
+.aero-dark {
+  // 底色由「冷调藏蓝近黑」改为「中性石墨蓝灰」：
+  // 旧 --ui-bg #0A1320 明度极低（L≈7%）且蓝通道压倒性偏高，大面积铺开呈
+  // 阴森的蓝黑，观感压抑。新底色提高明度（L≈13%）并把 R/G 抬起来降低蓝偏，
+  // 得到一层带微暖的石墨蓝灰，深但透气，大面积使用不刺眼。
+  --ui-ink: #EDF3F9;
+  --ui-ink-2: #AEBCCB;
+  --ui-ink-3: #7E8FA1;
+  --ui-bg: #141A24;
+  --ui-card: #1A2230;
+  --ui-bg-soft: color-mix(in srgb, var(--ui-brand) 6%, #1B2331);
+  --ui-bg-tint: color-mix(in srgb, var(--ui-brand) 11%, #212B3A);
+  --ui-line: color-mix(in srgb, var(--ui-brand) 20%, #2B3646);
+  --ui-line-2: color-mix(in srgb, var(--ui-brand) 32%, #36445A);
+  --ui-dot: color-mix(in srgb, var(--ui-brand) 18%, #2A3646);
+  --ui-brand-deep: color-mix(in srgb, var(--ui-brand) 78%, #000);
+  --ui-brand-ink: color-mix(in srgb, var(--ui-brand) 55%, #EAF1F8);
+
+  // 暗色硬阴影基准
+  --ui-shadow-xs: 2.5px 2.5px 0 var(--ui-ink);
+  --ui-shadow-sm: 4px 4px 0 var(--ui-ink);
+  --ui-shadow-md: 6px 6px 0 var(--ui-bg-tint);
+  --ui-focus-ring: 0 0 0 4px color-mix(in srgb, var(--ui-brand) 22%, transparent);
+
+  // 代码窗口暗色板：比页面底更深一档，靠明度落差把代码块「压」成一块实体面板，
+// 而不是浮在底色上没有边界。token 色沿用亮色板同一套（同为深底，无需切换）。
+  --ui-cw-bg: #10161F;
+  --ui-cw-bd: #303C4C;
+  --ui-cw-sh: transparent;
+  --ui-cw-bar1: #1A2230;
+  --ui-cw-bar2: #141C28;
+  --ui-cw-tx: #DDE5EE;
+  --ui-cw-ln: #55647A;
+  --ui-cw-ct: #93A3B5;
+  --ui-cw-btb: #3A4757;
+  --ui-cw-btn: #A6B4C4;
+  --ui-tk-c: #7A8A9C; --ui-tk-s: #7FDCAB; --ui-tk-k: #FF8E7A;
+  --ui-tk-k2: #C4A9F0; --ui-tk-f: #F2C078; --ui-tk-n: #FFD166;
+  --ui-tk-p: #8FA2B5; --ui-tk-u: #6FD0E8; --ui-tk-ok: #86D9A2;
+  --ui-tk-v: #C8D4E0;
+  --ui-cw-code-lang-bg: rgba(255, 255, 255, 0.09);
+  --ui-cw-code-lang-bd: rgba(255, 255, 255, 0.18);
+  --ui-cw-code-lang-tx: #9FD8F5;
+  --ui-cw-line-hover: rgba(255, 255, 255, 0.05);
+  --ui-cw-tape: rgba(255, 255, 255, 0.09);
+
+  // 暗主题下 CodeBlock 深底 token 沿用深板值（覆盖亮板组）
+  --ui-code-tk-c: #7A8A9C; --ui-code-tk-s: #7FDCAB; --ui-code-tk-k: #FF8E7A;
+  --ui-code-tk-k2: #C4A9F0; --ui-code-tk-f: #F2C078; --ui-code-tk-n: #FFD166;
+  --ui-code-tk-p: #8FA2B5; --ui-code-tk-u: #6FD0E8; --ui-code-tk-ok: #86D9A2;
+  --ui-code-tk-v: #C8D4E0;
+
+  color-scheme: dark;
+}
+
+// ---------- 动画 Keyframes（全库共享） ----------
+@keyframes ui-fade-up {
+  /* aliyun 美学：克制淡入 + 小位移（6px），不用 18px 大幅飞入 */
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ui-pop-in {
+  from { opacity: 0; transform: scale(.85); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ui-page-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ui-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes ui-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes ui-pulse {
+  0% { transform: scale(1); opacity: .7; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes ui-mpulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.22); }
+}
+@keyframes ui-floaty {
+  0%, 100% { transform: translateY(-8px); }
+  50% { transform: translateY(8px); }
+}
+@keyframes ui-shimmer {
+  to { background-position: -200% 0; }
+}
+@keyframes ui-marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes ui-ripple {
+  to { transform: scale(2.6); opacity: 0; }
+}
+@keyframes ui-bounce-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes ui-shake-x {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+@keyframes ui-wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+@keyframes ui-blink-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .15; }
+}
+@keyframes ui-dash-flow {
+  to { stroke-dashoffset: -40; }
+}
+@keyframes ui-drawline {
+  0% { stroke-dashoffset: 600; }
+  55%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes ui-bar-grow {
+  0%, 100% { transform: scaleY(.45); }
+  50% { transform: scaleY(1); }
+}
+@keyframes ui-squish {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.06, .92); }
+  100% { transform: scale(1); }
+}
+@keyframes ui-sparkle-tw {
+  0%, 100% { opacity: 0; transform: scale(.4) rotate(0); }
+  50% { opacity: 1; transform: scale(1.1) rotate(90deg); }
+}
+@keyframes ui-wipe-in {
+  from { transform: scaleX(0); }
+}
+@keyframes ui-toast-in {
+  from { opacity: 0; transform: translateX(60px) scale(.88) rotate(2deg); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ui-tbar {
+  from { width: 100%; }
+  to { width: 0; }
+}
+@keyframes ui-ring-pop {
+  from { transform: scale(.15) rotate(-20deg); opacity: .9; }
+  to { transform: scale(1.15) rotate(10deg); opacity: 0; }
+}
+@keyframes ui-ph-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .55; }
+}
+
+// ---------- 全库共享小件 ----------
+// 涟漪（组件按下瞬间注入，类名 .aero-ripple）
+.aero-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ui-on-brand) 20%, transparent);
+  transform: scale(0);
+  animation: ui-ripple 0.65s ease-out forwards;
+  pointer-events: none;
+}
+
+// 礼花特效（useParty 注入，事件驱动、有限时长）
+.aero-party-ring {
+  position: fixed;
+  width: 110px;
+  height: 110px;
+  margin: -55px 0 0 -55px;
+  border: 3px solid var(--ui-brand);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--ui-z-toast);
+  animation: ui-ring-pop 0.55s ease-out forwards;
+}
+.aero-party-emoji {
+  position: fixed;
+  z-index: var(--ui-z-toast);
+  font-size: 30px;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-50%, -50%);
+}
+.aero-party-ribbon {
+  position: fixed;
+  z-index: var(--ui-z-toast);
+  pointer-events: none;
+}
+.aero-party-star {
+  position: fixed;
+  z-index: var(--ui-z-toast);
+  pointer-events: none;
+}
+
+// ---------- 全局：禁用 iOS Safari tap highlight 半透明色块 ----------
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+// ---------- 无障碍降级：偏好减弱动效 ----------
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// ---------- 全局动效断路（useMotion 关闭时 html[data-motion=off]） ----------
+// 停用全库循环动画与过渡，保留 hover 色彩等无运动反馈；
+// 但「反馈类」宿主（Notification / Toast，Teleport 到 body）的入场动画
+// 属于一次性提示反馈而非常驻循环，断路会令通知视觉上「不弹出」，
+// 故排除在断路范围之外。
+html[data-motion='off'] *,
+html[data-motion='off'] *::before,
+html[data-motion='off'] *::after {
+  animation-duration: .01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .01ms !important;
+}
+html[data-motion='off'] .aero-noti-host *,
+html[data-motion='off'] .aero-toasts *,
+html[data-motion='off'] .aero-noti,
+html[data-motion='off'] .aero-toast {
+  animation-duration: .45s !important;
+  animation-iteration-count: 1 !important;
+}

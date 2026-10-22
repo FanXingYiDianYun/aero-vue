@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <rect width="1200" height="400" fill="#FFFFFF"/>
+  <g transform="translate(48 44.2) scale(4.8)">
+    <circle cx="32" cy="32.5" r="21" fill="#FFE9DB"/>
+    <g fill="#5B4648">
+      <path d="M1.7 0 Q0.15 0.15 0 0.88 Q-0.15 0.15 -0.68 0 Q-0.15 -0.15 0 -0.88 Q0.15 -0.15 1.7 0 Z" transform="translate(35.61 50.79) rotate(135)"/>
+      <path d="M1.7 0 Q0.15 0.15 0 0.88 Q-0.15 0.15 -0.68 0 Q-0.15 -0.15 0 -0.88 Q0.15 -0.15 1.7 0 Z" transform="translate(35.61 58.01) rotate(-135)"/>
+      <path d="M1.7 0 Q0.15 0.15 0 0.88 Q-0.15 0.15 -0.68 0 Q-0.15 -0.15 0 -0.88 Q0.15 -0.15 1.7 0 Z" transform="translate(28.39 58.01) rotate(-45)"/>
+      <path d="M1.7 0 Q0.15 0.15 0 0.88 Q-0.15 0.15 -0.68 0 Q-0.15 -0.15 0 -0.88 Q0.15 -0.15 1.7 0 Z" transform="translate(28.39 50.79) rotate(45)"/>
+    </g>
+    <line x1="32" y1="6" x2="32" y2="12" stroke="#E8452B" stroke-width="2.6" stroke-linecap="round"/>
+    <circle cx="32" cy="13.5" r="2.2" fill="none" stroke="#5B4648" stroke-width="1.8"/>
+    <rect x="26" y="15.8" width="12" height="6" rx="2" fill="#5B4648"/>
+    <rect x="27.5" y="16.8" width="9" height="1.6" rx="0.8" fill="#FFD9C7"/>
+    <polygon points="32,21 21,34 32,34" fill="#FF8A4D"/>
+    <polygon points="32,21 43,34 32,34" fill="#FFB066"/>
+    <polygon points="21,34 32,34 32,45" fill="#E8632E"/>
+    <polygon points="32,34 43,34 32,45" fill="#FF7F45"/>
+    <path d="M32 21 L43 34 L32 45 L21 34 Z" fill="none" stroke="#5B4648" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M30.5 44.6 Q32 44.2 33.5 44.6 L33 47.2 Q32 47.9 31 47.2 Z" fill="#5B4648"/>
+    <path d="M32 49.9 L33.34 52.86 L36.5 54.4 L33.34 55.94 L32 58.9 L30.66 55.94 L27.5 54.4 L30.66 52.86 Z" fill="#FFC94D" stroke="#5B4648" stroke-width="1.4" stroke-linejoin="round"/>
+    <circle cx="32" cy="54.4" r="1.2" fill="#FFF3D6"/>
+  </g>
+  <g transform="translate(984 20) scale(2.7)">
+    <g fill="#5B4648">
+      <path d="M1.7 0 Q0.15 0.15 0 0.88 Q-0.15 0.15 -0.68 0 Q-0.15 -0.15 0 -0.88 Q0.15 -0.15 1.7 0 Z" transform="translate(35.61 50.79) rotate(135)"/>
+      <path d="M1.7 0 Q0.15 0.15 0 0.88 Q-0.15 0.15 -0.68 0 Q-0.15 -0.15 0 -0.88 Q0.15 -0.15 1.7 0 Z" transform="translate(35.61 58.01) rotate(-135)"/>
+      <path d="M1.7 0 Q0.15 0.15 0 0.88 Q-0.15 0.15 -0.68 0 Q-0.15 -0.15 0 -0.88 Q0.15 -0.15 1.7 0 Z" transform="translate(28.39 58.01) rotate(-45)"/>
+      <path d="M1.7 0 Q0.15 0.15 0 0.88 Q-0.15 0.15 -0.68 0 Q-0.15 -0.15 0 -0.88 Q0.15 -0.15 1.7 0 Z" transform="translate(28.39 50.79) rotate(45)"/>
+    </g>
+    <polygon points="32,21 21,34 32,34" fill="#FF8A4D"/>
+    <polygon points="32,21 43,34 32,34" fill="#FFB066"/>
+    <polygon points="21,34 32,34 32,45" fill="#E8632E"/>
+    <polygon points="32,34 43,34 32,45" fill="#FF7F45"/>
+    <path d="M32 21 L43 34 L32 45 L21 34 Z" fill="none" stroke="#5B4648" stroke-width="2.6" stroke-linejoin="round"/>
+  </g>
+  <text x="400" y="196" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="76" font-weight="800" letter-spacing="2" fill="#5B4648">AeroUI</text>
+  <rect x="404" y="220" width="96" height="7" rx="3.5" fill="#E8452B"/>
+  <text x="404" y="268" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" font-size="27" font-weight="500" letter-spacing="1" fill="#5B4648" opacity="0.55">一个好看、优雅、易套用的 Vue 组件库</text>
+</svg>

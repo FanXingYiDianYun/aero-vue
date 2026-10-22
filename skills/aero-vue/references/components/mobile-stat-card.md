@@ -1,0 +1,50 @@
+# AeroMobileStatCard（mobile-stat-card）
+
+分组：Mobile 移动端
+中文名：数据卡
+
+具名导入：
+
+```ts
+import { AeroMobileStatCard } from 'aero-vue'
+```
+
+## props
+| prop | 类型 | 默认 |
+|---|---|---|
+| `label` | string | — |
+| `value` | string|number | — |
+| `chart` | 'line'|'bar'|'none' | 'none' |
+| `points` | AeroSparkPoint[] | — |
+| `bars` | Array<{x,y,w,h,main?}> | — |
+| `mainColor` | boolean | true |
+
+
+## 最小示例（源自 demo/basic.vue）
+```vue
+<script setup lang="ts">
+import { AeroMobileStatCard, useLocale } from 'aero-vue'
+// 卡片 label 原硬编码中文 → 走词包 demo 组（数值数据保留）
+const { demo } = useLocale()
+const t = demo
+
+const line = [
+  { x: 2, y: 20 }, { x: 18, y: 14 }, { x: 32, y: 17 }, { x: 48, y: 8 },
+  { x: 64, y: 12 }, { x: 80, y: 5 }, { x: 98, y: 9 },
+]
+const bars = [
+  { x: 10, y: 12, w: 8, h: 12 }, { x: 30, y: 8, w: 8, h: 16, main: true },
+  { x: 50, y: 14, w: 8, h: 10 }, { x: 70, y: 5, w: 8, h: 19, main: true }, { x: 88, y: 10, w: 8, h: 14 },
+]
+</script>
+<template>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 300px">
+    <AeroMobileStatCard label="QPS" value="12,480" />
+    <AeroMobileStatCard :label="t['mobileStatCard.p95']" value="41ms" />
+    <AeroMobileStatCard :label="t['mobileStatCard.online']" value="34" chart="line" :points="line" />
+    <AeroMobileStatCard :label="t['mobileStatCard.deploy']" value="218" chart="bar" :bars="bars" />
+  </div>
+</template>
+```
+完整示例源码：https://github.com/FanXingYiDianYun/aero-vue/blob/main/src/components/mobile-stat-card/demo/basic.vue
+

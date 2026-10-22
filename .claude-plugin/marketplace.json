@@ -1,0 +1,17 @@
+{
+  "name": "aero-vue",
+  "owner": {
+    "name": "Aero UI Team"
+  },
+  "metadata": {
+    "description": "Aero UI（aero-vue）组件库官方 Claude Code 插件市场——提供 aero-vue 开发助手 skill（组件选择 / API / 错误对照 / 盒模型坑区 / i18n 与主题接入）",
+    "version": "1.0.0-beta.4"
+  },
+  "plugins": [
+    {
+      "name": "aero-vue",
+      "source": "./",
+      "description": "Aero UI 开发助手 skill（aero-vue，Vue 3 + TypeScript，102 组件）"
+    }
+  ]
+}

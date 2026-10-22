@@ -1,0 +1,3 @@
+// AeroButton 样式在 SFC 内 scoped 实现（仅引用 --ui-* token）
+// 此文件保留全局穿透场景使用
+@use '../../src/styles/tokens.scss' as *;

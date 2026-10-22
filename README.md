@@ -11,6 +11,8 @@ Version `1.0.0` · Codename "Stratosphere"
 <img src="https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
 <img src="https://img.shields.io/badge/license-MIT-334155" alt="MIT" />
 <img src="https://img.shields.io/badge/tests-vitest%20%2B%20vue--tsc-6E9F18" alt="tests" />
+<img src="https://img.shields.io/npm/v/aero-vue" alt="npm" />
+<img src="https://img.shields.io/npm/dm/aero-vue" alt="downloads" />
 </div>
 
 ---
